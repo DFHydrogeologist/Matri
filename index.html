@@ -204,6 +204,64 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-
   .menu-section-label::after{left:calc(50% + 60px)}
 }
 
+/* ========= TRIVIA SCREEN ========= */
+#trivia-screen{flex-direction:column;align-items:center;background:var(--ivory);color:var(--text);padding:0;min-height:100dvh}
+.trivia-container{max-width:680px;margin:0 auto;padding:48px 24px 80px;min-height:100dvh;display:flex;flex-direction:column;align-items:center;width:100%}
+.trivia-header{text-align:center;margin-bottom:32px;animation:fadeUp 1s ease-out}
+.trivia-header .emoji{font-size:3rem;margin-bottom:12px;display:block}
+.trivia-header h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,6vw,40px);color:var(--charcoal);line-height:1.2}
+.trivia-header .sub{font-weight:300;font-size:14px;color:var(--text-light);margin-top:8px;letter-spacing:1px}
+.trivia-progress{width:100%;max-width:480px;height:3px;background:var(--warm-sand);margin-bottom:32px;overflow:hidden;border-radius:2px}
+.trivia-progress-bar{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));transition:width 0.5s ease;border-radius:2px}
+.trivia-card{width:100%;max-width:480px;animation:fadeUp 0.5s ease-out}
+.trivia-count{font-family:'Jost',sans-serif;font-weight:300;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;text-align:center}
+.trivia-question{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(22px,5vw,28px);color:var(--charcoal);text-align:center;line-height:1.3;margin-bottom:28px}
+.trivia-options{display:flex;flex-direction:column;gap:10px}
+.trivia-opt{
+  padding:16px 20px;border:1px solid var(--warm-sand);background:white;
+  font-family:'Jost',sans-serif;font-weight:300;font-size:15px;color:var(--text);
+  cursor:pointer;transition:all 0.3s ease;text-align:left;display:flex;align-items:center;gap:12px;
+}
+.trivia-opt:hover{border-color:var(--sage);padding-left:24px}
+.trivia-opt .letter{
+  font-family:'Cormorant Garamond',serif;font-weight:500;font-size:18px;
+  color:var(--gold);width:24px;flex-shrink:0;
+}
+.trivia-opt.correct{border-color:var(--sage);background:rgba(156,175,147,0.1);color:var(--sage-deep)}
+.trivia-opt.correct .letter{color:var(--sage-deep)}
+.trivia-opt.wrong{border-color:#D4878F;background:rgba(212,135,143,0.08);color:#8B3A3F;opacity:0.6}
+.trivia-opt.disabled{pointer-events:none}
+.trivia-reveal{
+  margin-top:20px;padding:20px;text-align:center;
+  background:linear-gradient(135deg,rgba(156,175,147,0.06),rgba(197,164,97,0.06));
+  border:1px solid rgba(197,164,97,0.15);
+  opacity:0;transform:translateY(10px);transition:all 0.5s ease;
+}
+.trivia-reveal.show{opacity:1;transform:translateY(0)}
+.trivia-reveal .icon{font-size:2rem;margin-bottom:8px;display:block}
+.trivia-reveal .text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:16px;color:var(--text-light);line-height:1.5}
+.trivia-next{
+  margin-top:24px;padding:14px 40px;font-family:'Jost',sans-serif;font-weight:400;
+  font-size:13px;letter-spacing:3px;text-transform:uppercase;
+  border:1.5px solid var(--gold);background:transparent;color:var(--text);
+  cursor:pointer;transition:all 0.3s;opacity:0;transform:translateY(10px);
+}
+.trivia-next.show{opacity:1;transform:translateY(0)}
+.trivia-next:hover{background:var(--charcoal);color:var(--ivory);border-color:var(--charcoal)}
+
+.trivia-result{width:100%;max-width:480px;text-align:center;animation:fadeUp 0.6s ease-out}
+.trivia-result .emoji{font-size:4rem;margin-bottom:16px;display:block}
+.trivia-result .score{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,10vw,72px);color:var(--charcoal);line-height:1}
+.trivia-result .score-label{font-family:'Jost',sans-serif;font-weight:300;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:8px 0 20px}
+.trivia-result .verdict{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:20px;color:var(--text-light);line-height:1.5;margin-bottom:32px}
+.trivia-restart{
+  padding:14px 40px;font-family:'Jost',sans-serif;font-weight:400;
+  font-size:13px;letter-spacing:3px;text-transform:uppercase;
+  border:1.5px solid var(--gold);background:transparent;color:var(--text);
+  cursor:pointer;transition:all 0.3s;
+}
+.trivia-restart:hover{background:var(--charcoal);color:var(--ivory);border-color:var(--charcoal)}
+
 /* ========= SOLTEROS DARK THEME ========= */
 .dark-theme{background:#1A1423!important;color:#FFFBF0!important}
 #solteros-home{flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2rem;position:relative;overflow:hidden}
@@ -298,6 +356,7 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-
   <div class="w-buttons">
     <button class="w-btn" onclick="goTo('mesas-screen')">Mesas<span class="w-btn-sub">Encuentra tu lugar</span></button>
     <button class="w-btn" onclick="goTo('menu-screen')">Menú<span class="w-btn-sub">Gastronomía & Vinos</span></button>
+    <button class="w-btn" onclick="goTo('trivia-screen')">Trivia<span class="w-btn-sub">¿Cuánto conoces a los novios?</span></button>
     <button class="w-btn soltero" onclick="goTo('solteros-home')">¿Estás Soltero/a?<span class="w-btn-sub">💘 Descubre quién está disponible</span></button>
   </div>
 </div>
@@ -373,6 +432,17 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-
       </div>
     </div>
 
+    <div class="menu-card" style="animation-delay:0.25s">
+      <div class="menu-card-type"><span class="dot"></span>Vegetariano</div>
+      <div class="menu-card-name">Timbal de Quinua & Vegetales Asados</div>
+      <div class="menu-card-desc">La nobleza de la quinua — grano sagrado de los Andes — prensada en un timbal dorado, rodeada de vegetales asados que concentran todo su dulzor al fuego. Un mix de hojas verdes frescas completa el plato con ligereza y color. Sencillo, honesto, luminoso.</div>
+      <div class="menu-card-maridaje">
+        <div class="maridaje-label">Sugerencia del sommelier</div>
+        <div class="maridaje-wine">Chardonnay — Casas del Bosque</div>
+        <div class="maridaje-note">Sus notas a fruta blanca y acidez vibrante dialogan con la frescura de las hojas verdes y el dulzor terroso de los vegetales asados. Elegante sin competir.</div>
+      </div>
+    </div>
+
     <div class="menu-section-label">Fondos</div>
 
     <div class="menu-card" style="animation-delay:0.3s">
@@ -394,6 +464,17 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-
         <div class="maridaje-label">Sugerencia del sommelier</div>
         <div class="maridaje-wine">Chardonnay o Carménère — Casas del Bosque</div>
         <div class="maridaje-note">El Chardonnay — fresco y de acidez vibrante — equilibra la cremosidad de la palta y resalta la nobleza del salmón. O deja que el Carménère con sus notas a especias y su cuerpo maduro abrace la intensidad de la salsa a lo macho.</div>
+      </div>
+    </div>
+
+    <div class="menu-card" style="animation-delay:0.45s">
+      <div class="menu-card-type"><span class="dot"></span>Vegetariano</div>
+      <div class="menu-card-name">Lasaña Vegana de Tomates Deshidratados</div>
+      <div class="menu-card-desc">Capas de pasta que esconden un curry de lentejas rojas — aromático, sedoso, con la profundidad que solo las especias bien tratadas pueden dar. Tomates deshidratados que estallan en umami y una crema de coco que lo envuelve todo en terciopelo. Un plato que no le pide permiso a nadie para ser el protagonista de la mesa.</div>
+      <div class="menu-card-maridaje">
+        <div class="maridaje-label">Sugerencia del sommelier</div>
+        <div class="maridaje-wine">Carménère — Casas del Bosque</div>
+        <div class="maridaje-note">Las especias del curry encuentran su espejo en las notas a pimentón verde y tabaco del Carménère. Su cuerpo voluptuoso y taninos suaves abrazan la cremosidad del coco — una conversación entre dos mundos que se entienden a la perfección.</div>
       </div>
     </div>
 
@@ -438,6 +519,20 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-
     </div>
 
     <div class="menu-footer"><p>Con amor, Paula & Diego</p></div>
+  </div>
+</div>
+
+<!-- TRIVIA -->
+<div class="screen" id="trivia-screen">
+  <div class="trivia-container">
+    <button class="mesas-back" onclick="goTo('wedding-home')">← Volver</button>
+    <header class="trivia-header">
+      <span class="emoji">💘</span>
+      <h2>¿Cuánto conoces<br>a los novios?</h2>
+      <p class="sub">10 preguntas — 0 excusas</p>
+    </header>
+    <div class="trivia-progress"><div class="trivia-progress-bar" id="triviaBar" style="width:0%"></div></div>
+    <div id="triviaContent"></div>
   </div>
 </div>
 
@@ -557,6 +652,69 @@ function showMesaResult(guest){
 }
 
 document.addEventListener('click',e=>{if(!e.target.closest('.search-wrapper'))autocompleteEl.classList.remove('show')});
+
+// ===== TRIVIA =====
+const TRIVIA=[
+{q:"¿Cómo se conocieron los novios?",opts:["En una charla de Hidrogeología 🧠","Por amigos en común (la clásica)","Cita a ciegas","App de citas — sí, swipe right cambió todo 📱🔥"],ans:3,reveal:"El algoritmo hizo lo que el destino no se atrevió."},
+{q:"¿Quién dio el primer paso?",opts:["Paula 💁‍♀️ — no iba a esperar toda la vida","Diego — se armó de valor","El destino hizo lo suyo ✨"],ans:0,reveal:"Paula vio lo que quería y fue a buscarlo. Fin."},
+{q:"¿Qué fue lo primero que pensó Diego de Paula?",opts:['"Ella es distinta"','"Me va a ordenar la vida" 😅','"Estoy en problemas"','"Me enamoré" 💘'],ans:3,reveal:"No hubo segunda opinión. El hombre cayó en la primera ronda."},
+{q:"¿Cuánto duró la primera cita?",opts:["1 hora — lo justo y necesario","2 horas — civilizado","5 horas — se pasaron de largo","No se querían ir 😏"],ans:3,reveal:"Todavía no se van. De hecho por eso estamos acá."},
+{q:"¿Quién dijo \"te amo\" primero?",opts:["Paula 💛 — coherente hasta el final","Diego — le salió del alma","Fue tan raro que nadie se acuerda 😂"],ans:0,reveal:"Paula otra vez. La mujer no solo da el primer paso, da el primer \"te amo\". Diego todavía estaba procesando."},
+{q:"¿Quién cocina mejor?",opts:["Paula 👩‍🍳","Diego 👨‍🍳","Uber Eats — el verdadero MVP 🛵"],ans:1,reveal:"Diego maneja la cocina como maneja la relación: con calma y sazón."},
+{q:"¿Cómo se llaman los perrhijos de los novios?",opts:["Whisky y Tequila 🍹 — elegantes pero peligrosos","Thor y Loki — un dios y un villano","Sasha y Piero 🐶","Croqueta y Firulais — los clásicos"],ans:2,reveal:"Sasha y Piero: los verdaderos dueños de la casa y los que aprobaron esta boda."},
+{q:"¿Quién manda en la casa?",opts:["Paula — obvio","Diego — ilusión bonita","Los perros 🐶👑"],ans:2,reveal:"Sasha y Piero gobiernan. Los novios solo pagan las cuentas."},
+{q:"¿Qué es lo que más discuten?",opts:["Qué comer 🍣",'"Estamos atrasados" ⏰',"Planes del fin de semana","Nada, son perfectos 😇"],ans:1,reveal:'Uno dice "ya estamos tarde", el otro dice "relájate". Adivinen quién es quién.'},
+{q:"¿Qué describe mejor su dinámica de pareja?",opts:["Orden + relajo ⚖️","Intensidad + calma","Planificación + improvisación","Todas las anteriores"],ans:0,reveal:"Paula organiza el mundo, Diego lo disfruta. Y así funciona."}
+];
+let triviaIdx=0,triviaScore=0;
+const letters=['A','B','C','D'];
+
+function startTrivia(){triviaIdx=0;triviaScore=0;renderTrivia()}
+
+function renderTrivia(){
+  const box=document.getElementById('triviaContent');
+  const bar=document.getElementById('triviaBar');
+  if(triviaIdx>=TRIVIA.length){showTriviaResult();return}
+  const t=TRIVIA[triviaIdx];
+  bar.style.width=((triviaIdx)/TRIVIA.length*100)+'%';
+  let optsHtml=t.opts.map((o,i)=>`<div class="trivia-opt" onclick="answerTrivia(${i})"><span class="letter">${letters[i]}</span>${o}</div>`).join('');
+  box.innerHTML=`<div class="trivia-card"><div class="trivia-count">Pregunta ${triviaIdx+1} de ${TRIVIA.length}</div><div class="trivia-question">${t.q}</div><div class="trivia-options">${optsHtml}</div><div class="trivia-reveal" id="triviaReveal"><span class="icon" id="triviaRevealIcon"></span><span class="text" id="triviaRevealText"></span></div><button class="trivia-next" id="triviaNext" onclick="nextTrivia()">Siguiente →</button></div>`;
+}
+
+function answerTrivia(idx){
+  const t=TRIVIA[triviaIdx];
+  const opts=document.querySelectorAll('.trivia-opt');
+  opts.forEach((o,i)=>{
+    o.classList.add('disabled');
+    if(i===t.ans)o.classList.add('correct');
+    else if(i===idx&&idx!==t.ans)o.classList.add('wrong');
+  });
+  const correct=idx===t.ans;
+  if(correct)triviaScore++;
+  const reveal=document.getElementById('triviaReveal');
+  document.getElementById('triviaRevealIcon').textContent=correct?'✨':'😅';
+  document.getElementById('triviaRevealText').textContent=t.reveal;
+  reveal.classList.add('show');
+  document.getElementById('triviaNext').classList.add('show');
+}
+
+function nextTrivia(){triviaIdx++;renderTrivia()}
+
+function showTriviaResult(){
+  const bar=document.getElementById('triviaBar');
+  bar.style.width='100%';
+  const box=document.getElementById('triviaContent');
+  let emoji,verdict;
+  if(triviaScore<=2){emoji='😅';verdict='¿Seguro que conoces a los novios? Quizás necesitas pasar más tiempo con ellos...';}
+  else if(triviaScore<=4){emoji='🙂';verdict='No está mal, pero hay detalles que se te escapan. Los novios te perdonan... por ahora.';}
+  else if(triviaScore<=6){emoji='🔥';verdict='Conoces bien a esta pareja. Se nota que has estado ahí en los momentos importantes.';}
+  else{emoji='💘';verdict='¡Impecable! Conoces a Paula y Diego mejor que ellos mismos. Eres parte de esta historia.';}
+  box.innerHTML=`<div class="trivia-result"><span class="emoji">${emoji}</span><div class="score">${triviaScore}/${TRIVIA.length}</div><div class="score-label">Respuestas correctas</div><div class="verdict">${verdict}</div><button class="trivia-restart" onclick="startTrivia()">Intentar de nuevo</button></div>`;
+}
+
+// Auto-start trivia when navigating to it
+const origGoTo=goTo;
+goTo=function(id){origGoTo(id);if(id==='trivia-screen')startTrivia()};
 
 // ===== SOLTEROS =====
 const TITLES=["🔥 ¡IT'S A MATCH!","💘 ¡MATCH ENCONTRADO!","✨ ¡SE PRENDIÓ ESTA WEÁ!"];
