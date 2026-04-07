@@ -205,44 +205,44 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-
 }
 
 /* ========= TRIVIA SCREEN ========= */
-#trivia-screen{flex-direction:column;align-items:center;background:var(--ivory);color:var(--text);padding:0;min-height:100dvh}
-.trivia-container{max-width:680px;margin:0 auto;padding:48px 24px 80px;min-height:100dvh;display:flex;flex-direction:column;align-items:center;width:100%}
-.trivia-header{text-align:center;margin-bottom:32px;animation:fadeUp 1s ease-out}
-.trivia-header .emoji{font-size:3rem;margin-bottom:12px;display:block}
-.trivia-header h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,6vw,40px);color:var(--charcoal);line-height:1.2}
-.trivia-header .sub{font-weight:300;font-size:14px;color:var(--text-light);margin-top:8px;letter-spacing:1px}
-.trivia-progress{width:100%;max-width:480px;height:3px;background:var(--warm-sand);margin-bottom:32px;overflow:hidden;border-radius:2px}
+#trivia-screen{flex-direction:column;align-items:center;background:var(--ivory);color:var(--text);padding:0;min-height:100dvh;overflow-y:auto}
+.trivia-container{max-width:680px;margin:0 auto;padding:32px 20px 60px;min-height:100dvh;display:flex;flex-direction:column;align-items:center;width:100%}
+.trivia-header{text-align:center;margin-bottom:20px;animation:fadeUp 1s ease-out}
+.trivia-header .emoji{font-size:2.2rem;margin-bottom:6px;display:block}
+.trivia-header h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(24px,5vw,36px);color:var(--charcoal);line-height:1.2}
+.trivia-header .sub{font-weight:300;font-size:13px;color:var(--text-light);margin-top:6px;letter-spacing:1px}
+.trivia-progress{width:100%;max-width:480px;height:3px;background:var(--warm-sand);margin-bottom:20px;overflow:hidden;border-radius:2px}
 .trivia-progress-bar{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));transition:width 0.5s ease;border-radius:2px}
 .trivia-card{width:100%;max-width:480px;animation:fadeUp 0.5s ease-out}
-.trivia-count{font-family:'Jost',sans-serif;font-weight:300;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;text-align:center}
-.trivia-question{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(22px,5vw,28px);color:var(--charcoal);text-align:center;line-height:1.3;margin-bottom:28px}
-.trivia-options{display:flex;flex-direction:column;gap:10px}
+.trivia-count{font-family:'Jost',sans-serif;font-weight:300;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;text-align:center}
+.trivia-question{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(20px,4.5vw,26px);color:var(--charcoal);text-align:center;line-height:1.3;margin-bottom:18px}
+.trivia-options{display:flex;flex-direction:column;gap:8px}
 .trivia-opt{
-  padding:16px 20px;border:1px solid var(--warm-sand);background:white;
-  font-family:'Jost',sans-serif;font-weight:300;font-size:15px;color:var(--text);
-  cursor:pointer;transition:all 0.3s ease;text-align:left;display:flex;align-items:center;gap:12px;
+  padding:12px 16px;border:1px solid var(--warm-sand);background:white;
+  font-family:'Jost',sans-serif;font-weight:300;font-size:14px;color:var(--text);
+  cursor:pointer;transition:all 0.3s ease;text-align:left;display:flex;align-items:center;gap:10px;
 }
-.trivia-opt:hover{border-color:var(--sage);padding-left:24px}
+.trivia-opt:hover{border-color:var(--sage);padding-left:20px}
 .trivia-opt .letter{
-  font-family:'Cormorant Garamond',serif;font-weight:500;font-size:18px;
-  color:var(--gold);width:24px;flex-shrink:0;
+  font-family:'Cormorant Garamond',serif;font-weight:500;font-size:16px;
+  color:var(--gold);width:20px;flex-shrink:0;
 }
 .trivia-opt.correct{border-color:var(--sage);background:rgba(156,175,147,0.1);color:var(--sage-deep)}
 .trivia-opt.correct .letter{color:var(--sage-deep)}
 .trivia-opt.wrong{border-color:#D4878F;background:rgba(212,135,143,0.08);color:#8B3A3F;opacity:0.6}
 .trivia-opt.disabled{pointer-events:none}
 .trivia-reveal{
-  margin-top:20px;padding:20px;text-align:center;
+  margin-top:14px;padding:14px 16px;text-align:center;
   background:linear-gradient(135deg,rgba(156,175,147,0.06),rgba(197,164,97,0.06));
   border:1px solid rgba(197,164,97,0.15);
   opacity:0;transform:translateY(10px);transition:all 0.5s ease;
 }
 .trivia-reveal.show{opacity:1;transform:translateY(0)}
-.trivia-reveal .icon{font-size:2rem;margin-bottom:8px;display:block}
-.trivia-reveal .text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:16px;color:var(--text-light);line-height:1.5}
+.trivia-reveal .icon{font-size:1.5rem;margin-bottom:4px;display:block}
+.trivia-reveal .text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:14px;color:var(--text-light);line-height:1.4}
 .trivia-next{
-  margin-top:24px;padding:14px 40px;font-family:'Jost',sans-serif;font-weight:400;
-  font-size:13px;letter-spacing:3px;text-transform:uppercase;
+  margin-top:16px;padding:12px 36px;font-family:'Jost',sans-serif;font-weight:400;
+  font-size:12px;letter-spacing:3px;text-transform:uppercase;
   border:1.5px solid var(--gold);background:transparent;color:var(--text);
   cursor:pointer;transition:all 0.3s;opacity:0;transform:translateY(10px);
 }
@@ -250,13 +250,13 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-
 .trivia-next:hover{background:var(--charcoal);color:var(--ivory);border-color:var(--charcoal)}
 
 .trivia-result{width:100%;max-width:480px;text-align:center;animation:fadeUp 0.6s ease-out}
-.trivia-result .emoji{font-size:4rem;margin-bottom:16px;display:block}
-.trivia-result .score{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,10vw,72px);color:var(--charcoal);line-height:1}
-.trivia-result .score-label{font-family:'Jost',sans-serif;font-weight:300;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:8px 0 20px}
-.trivia-result .verdict{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:20px;color:var(--text-light);line-height:1.5;margin-bottom:32px}
+.trivia-result .emoji{font-size:3.5rem;margin-bottom:12px;display:block}
+.trivia-result .score{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(44px,9vw,64px);color:var(--charcoal);line-height:1}
+.trivia-result .score-label{font-family:'Jost',sans-serif;font-weight:300;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:6px 0 16px}
+.trivia-result .verdict{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:18px;color:var(--text-light);line-height:1.4;margin-bottom:24px;padding:0 10px}
 .trivia-restart{
-  padding:14px 40px;font-family:'Jost',sans-serif;font-weight:400;
-  font-size:13px;letter-spacing:3px;text-transform:uppercase;
+  padding:12px 36px;font-family:'Jost',sans-serif;font-weight:400;
+  font-size:12px;letter-spacing:3px;text-transform:uppercase;
   border:1.5px solid var(--gold);background:transparent;color:var(--text);
   cursor:pointer;transition:all 0.3s;
 }
@@ -679,6 +679,7 @@ function renderTrivia(){
   bar.style.width=((triviaIdx)/TRIVIA.length*100)+'%';
   let optsHtml=t.opts.map((o,i)=>`<div class="trivia-opt" onclick="answerTrivia(${i})"><span class="letter">${letters[i]}</span>${o}</div>`).join('');
   box.innerHTML=`<div class="trivia-card"><div class="trivia-count">Pregunta ${triviaIdx+1} de ${TRIVIA.length}</div><div class="trivia-question">${t.q}</div><div class="trivia-options">${optsHtml}</div><div class="trivia-reveal" id="triviaReveal"><span class="icon" id="triviaRevealIcon"></span><span class="text" id="triviaRevealText"></span></div><button class="trivia-next" id="triviaNext" onclick="nextTrivia()">Siguiente →</button></div>`;
+  document.getElementById('trivia-screen').scrollTo({top:0,behavior:'smooth'});
 }
 
 function answerTrivia(idx){
